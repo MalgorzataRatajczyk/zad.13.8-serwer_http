@@ -16,7 +16,7 @@ server.on('request', function (request, response) {
     } else {
 
         fs.readFile('./cats.jpg', function(err, data) {
-            response.write(/*err,*/ '<img src="./cats.jpg" alt="Wrong address!">');
+            response.write('<img src="./cats.jpg" alt="Wrong address!">');
                 response.end();   
         });
         
