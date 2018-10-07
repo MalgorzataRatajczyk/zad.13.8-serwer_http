@@ -1,3 +1,5 @@
+"use strict"
+
 var http = require('http');
 var fs = require('fs');
 
@@ -7,14 +9,17 @@ server.on('request', function (request, response) {
     if (request.method === 'GET' && request.url === '/') {
         fs.readFile('./index.html', 'utf-8', function(err, data) {
             response.write(data);
+                response.end();
+            
+        });
 
-        });
-        response.end();
     } else {
-        fs.readFile('./cats.jpg', 'utf-8', function(err, data) {
-            response.write(err, '<img src="./cats.jpg" alt="wrong adress"');
+
+        fs.readFile('./cats.jpg', function(err, data) {
+            response.write(/*err,*/ '<img src="./cats.jpg" alt="Wrong address!">');
+                response.end();   
         });
-            response.end();
+        
     }
     
 });
